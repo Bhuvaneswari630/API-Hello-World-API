@@ -1,6 +1,7 @@
 // DEPENDENCIES
 const express = require('express')
 const mongoose = require('mongoose')
+const languagesController = require('./controllers/languages_controller')
 
 // CONFIGURATION
 require('dotenv').config()
@@ -12,6 +13,7 @@ mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopolo
 
 // MIDDLEWARE
 app.use(express.urlencoded({extended: true}))
+app.use('/languages', languagesController)
 
 // ROUTES
 app.get('/', (req, res) => {
